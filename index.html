@@ -1,9 +1,5 @@
 <!doctype html>
 <html>
-<style>
-.reveal .slides { margin: 0; }
-
-</style>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -16,12 +12,50 @@
 
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+    <style>
+      img.zoom {
+        /* width: 200px; */
+        width: 400px;
+        height: 100vh ;
+        object-fit: none;
+        object-position: 80% 100%
+      }
+    </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
+        <section style="width: 1100px;"><h3>Nam Update 2021-2-17</h3>
+          <ul>
+            <li> Programming only in javascript to raise my competence </li>
+            <li> Supercables current source </li>
+            <ul> 
+              <li> Low noise, $\pm$100 mA </li>
+              <li> 8 channels </li>
+              <li> Can be adapted to $\pm$100 uA </li>
+              <li> power on/down glitch controlled </li>
+            </ul>
+            <li> Software tools for kicad and supercables current source </li>
+            <ul>
+              <li>  kicad tools: bom generator, position fixer for assembly </li>
+              <li>  kicad schematic / layout viewer </li>
+            </ul>
+          </ul>
+        </section>
+        <section> 8 channel current source for supercables
+          <img data-src="8ch_CS.jpg">
+        </section>
+        <section>JLC position problems
+          <!-- <img data&#45;src="good_pos.png"> -->
+          <!-- <img src="good.png"> -->
+          <div>
+          <!-- <img src="good_pos.png" style="object&#45;fit: contain"> -->
+          <img class="zoom" src="good.png">
+          <img class="zoom" src="bad.png">
+          <!-- <img data&#45;src="bad.png" style="object&#45;fit: contain;"> -->
+          <!-- <img data&#45;src="good.png" style="max&#45;height: 90vh;"> -->
+          </div>
+        </section>
         <section data-markdown>
           <textarea data-template>
             ## Slide 1
@@ -40,9 +74,6 @@
           \dot{y} &amp; = \rho x - y - xz \\
           \dot{z} &amp; = -\beta z + xy
           \end{aligned} \]
-        </section>
-        <section data-background-iframe="https://github.com/saewoonam/sc-current-source-hw"
-                 data-background-interactive>
         </section>
         <section data-background-iframe="https://saewoonam.github.io/sc-current-source-hw"
                  data-background-interactive>
@@ -69,6 +100,7 @@
         hash: true,
         previewLinks: false,
         center: false,
+        margin: 0.00,
         math: {
           mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
           config: 'TeX-AMS_HTML-full',
