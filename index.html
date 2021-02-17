@@ -104,6 +104,7 @@
     <script src="reveal.js/plugin/markdown/markdown.js"></script>
     <script src="reveal.js/plugin/highlight/highlight.js"></script>
     <script src="reveal.js/plugin/math/math.js"></script>
+    <script src="reveal.js/plugin/spotlight/spotlight.js"></script>
     <script>
       // More info about initialization & config:
       // - https://revealjs.com/initialization/
@@ -118,6 +119,18 @@
           config: 'TeX-AMS_HTML-full',
           // pass other options into `MathJax.Hub.Config()`
           TeX: { Macros: { RR: "{\\bf R}" } }
+        },
+        spotlight: {
+          size: 20,
+          useAsPointer: false,
+          spotlightCursor: 'crosshair',
+          lockPointerInsideCanvas: false,
+          pointerColor: 'red',
+        },
+        keyboard: { 
+          // alternative to toggleSpotlightOnMouseDown: 
+          // toggle spotlight by pressing key 'c'
+          67: function() { RevealSpotlight.toggleSpotlight() },
         },
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
