@@ -42,43 +42,52 @@
             </ul>
           </ul>
         </section>
-        <section> 8 channel current source for supercables
-          <img data-src="8ch_CS.jpg">
+        <section data-state="mark-8ch"> 8 Channel current source board
+          <img id = "8ch_picture" src="8ch_CS.jpg">
+          <!--  make canvase overlap picture -->
+          <canvas id='myCanvas' width='912px' height='684px'></canvas>
         </section>
-        <section>JLC position problems
-          <!-- <img data&#45;src="good_pos.png"> -->
-          <!-- <img src="good.png"> -->
-          <div>
-          <!-- <img src="good_pos.png" style="object&#45;fit: contain"> -->
-          <img class="zoom" src="good.png">
-          <img class="zoom" src="bad.png">
-          <!-- <img data&#45;src="bad.png" style="object&#45;fit: contain;"> -->
-          <!-- <img data&#45;src="good.png" style="max&#45;height: 90vh;"> -->
-          </div>
+        <section> Power glitch on power off (fixed with super-cap circuit)
+          <img data-src="power_glitch.JPG">
         </section>
-        <section data-markdown>
-          <textarea data-template>
-            ## Slide 1
-            A paragraph with some text and a [link](http://hakim.se).
-            ---
-            ---
-            ## Slide 2
-            ---
-            ## Slide 3
-          </textarea>
+        <section> <h3> JLCPCB.COM Assembly ... Javascript code to help </h3>
+          <ul>
+            <li> Generate BOM (Bill of Materials) </li>
+              <ul>
+                <li> Each item on the schematic needs a part number </li>
+                <li> Consolidate identical items... any typos screw up BOM </li>
+              </ul>
+              <li> Fix "pos"ition file... Orientation of the part </li>
+              <ul>
+                <li>  Orientation of the part out of the tape / reel  </li>
+              </ul>
+          </ul>
         </section>
-        <section>
-          <h2>The Lorenz Equations</h2>
-          \[\begin{aligned}
-          \dot{x} &amp; = \sigma(y-x) \\
-          \dot{y} &amp; = \rho x - y - xz \\
-          \dot{z} &amp; = -\beta z + xy
-          \end{aligned} \]
+        <section> JLCPCB.com price
+          <img data-src="JLCPrice.png">
         </section>
-        <section data-background-iframe="https://saewoonam.github.io/sc-current-source-hw"
-                 data-background-interactive>
+        <section> Upload manufacturing files
+          <img data-src="JLC_BOM_POS.png">
         </section>
-        <section>
+        <section> BOM
+          <img data-src="BOM.png">
+        </section>
+        <section> Schematic Data Tweaker
+          <img data-src="bom_tweaker.png">
+        </section>
+        <section> Not all parts are correctly oriented
+          <img src="POS_bad.png" style="max-height: 110vh">
+        </section>
+        <section>  Another github hosted program
+          <img data-src="pos_tweaker.png">
+        </section>
+        <section>  Online viewer for schematics and pcb layout
+          <img data-src="kicad_viewer_github_repo.png">
+        </section>
+        <!-- <section data&#45;background&#45;iframe="https://saewoonam.github.io/sc&#45;current&#45;source&#45;hw" -->
+        <!--          data&#45;background&#45;interactive> -->
+        <!-- </section> -->
+        <section>  Example of online viewer running...
           <iframe src = "https://saewoonam.github.io/sc-current-source-hw" width="100%"
             height="400px" style="border:1px solid black;"
             >
@@ -99,7 +108,7 @@
       Reveal.initialize({
         hash: true,
         previewLinks: false,
-        center: false,
+        // center: false,
         margin: 0.00,
         math: {
           mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
@@ -110,6 +119,55 @@
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
       });
+      Reveal.addEventListener( 'mark-8ch', function() {
+        console.log( 'mark-8ch called!' );
+        var img = document.getElementById("8ch_picture");
+        var cnvs = document.getElementById("myCanvas");
+        // console.log(img, img.offsetLeft, img.offsetTop, img.offsetWidth, img.offsetHeight)
+        cnvs.style.position = "absolute";
+        cnvs.style.left = img.offsetLeft + "px";
+        cnvs.style.top = img.offsetTop + "px";
+
+        var ctx = cnvs.getContext("2d");
+        ctx.beginPath();
+        ctx.ellipse(180, 370, 50, 120, Math.PI*0.05  , 0, 2*Math.PI);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#00ff00';
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.ellipse(620, 400, 50, 100, Math.PI*1.95  , 0, 2*Math.PI);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#ffff00';
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.ellipse(720, 410, 50, 50, Math.PI*1.95  , 0, 2*Math.PI);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#00ffff';
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.font = '30px serif';
+        ctx.fillStyle = "#00ff00";
+        ctx.textAlign = "center";
+        ctx.fillText('output-switches', 190, 240);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.font = '30px serif';
+        ctx.fillStyle = "#ffff00";
+        ctx.textAlign = "center";
+        ctx.fillText('super-capacitors', 620, 300);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.font = '30px serif';
+        ctx.fillStyle = "#00ffff";
+        ctx.textAlign = "left";
+        ctx.fillText('Isolated DC/DC converter', 550, 550);
+        ctx.stroke();
+      } );
     </script>
   </body>
 </html>
